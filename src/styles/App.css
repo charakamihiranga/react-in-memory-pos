@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #6B7280;
+        border-radius: 8px;
+        border: 2px solid #F3F4F6;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #F3F4F6;
+        border-radius: 8px;
+    }
+}
+
+.input-label {
+    @apply block text-sm font-medium mb-2 ml-2 text-gray-700;
+}
+.input {
+    @apply w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-1 mb-4 focus:ring-blue-500 focus:border-blue-500;
+}
+
+
+
+.add-button {
+    @apply mt-6 w-full  inline-block text-base font-bold bg-blue-500 text-white py-2 rounded-lg shadow hover:bg-blue-600 transition duration-300
+}
+
+.update-button {
+    @apply mt-6 w-full  inline-block text-base font-bold bg-orange-500 text-white py-2 rounded-lg shadow hover:bg-orange-600 transition duration-300
+}
+
+.cancel-button {
+    @apply mt-6 w-full  inline-block text-base font-bold bg-gray-300 text-black py-2 rounded-lg shadow hover:bg-gray-400 transition duration-300
+}
