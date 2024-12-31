@@ -1,15 +1,28 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {CustomerContext} from "../contexts/CustomerProvider.tsx";
 import {Customer} from "../model/Customer.ts";
+import {UpdateCustomer} from "./UpdateCustomer.tsx";
 
 export function ViewCustomer() {
     const [customers, dispatch] = useContext(CustomerContext);
+    const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
+
     function handleUpdate(customer: Customer) {
-        console.log("Update Customer", customer);
+        setSelectedCustomer(customer);
     }
     function handleDelete(id: string) {
-        console.log("Delete Customer", id);
+        dispatch({ type: "REMOVE_CUSTOMER", payload: id });
     }
+
+    function handleSave(customer: Customer){
+        dispatch({type: "UPDATE_CUSTOMER", payload: customer});
+        setSelectedCustomer(null);
+    }
+
+    function handleClose(){
+        setSelectedCustomer(null);
+    }
+
     return (
 
         <div className="overflow-hidden bg-white rounded-lg p-4">
@@ -52,7 +65,15 @@ export function ViewCustomer() {
                     </div>
                 ))}
             </div>
+            {selectedCustomer && (
+                <UpdateCustomer
+                    customer={selectedCustomer}
+                    onClose={handleClose}
+                    onSave={handleSave}
+                />
+            )}
         </div>
+
 
 
     );

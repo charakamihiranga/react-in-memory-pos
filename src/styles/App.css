@@ -23,3 +23,11 @@
 .add-button {
     @apply mt-6 w-full  inline-block text-base font-bold bg-blue-500 text-white py-2 rounded-lg shadow hover:bg-blue-600 transition duration-300
 }
+
+.update-button {
+    @apply mt-6 w-full  inline-block text-base font-bold bg-orange-500 text-white py-2 rounded-lg shadow hover:bg-orange-600 transition duration-300
+}
+
+.cancel-button {
+    @apply mt-6 w-full  inline-block text-base font-bold bg-gray-300 text-black py-2 rounded-lg shadow hover:bg-gray-400 transition duration-300
+}
