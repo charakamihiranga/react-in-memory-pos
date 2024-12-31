@@ -7,14 +7,14 @@ export function ViewCustomer() {
     const [customers, dispatch] = useContext(CustomerContext);
     const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
 
-    function handleUpdate(customer: Customer) {
+    function handleOpenUpdatePopup(customer: Customer) {
         setSelectedCustomer(customer);
     }
     function handleDelete(id: string) {
         dispatch({ type: "REMOVE_CUSTOMER", payload: id });
     }
 
-    function handleSave(customer: Customer){
+    function handleUpdate(customer: Customer){
         dispatch({type: "UPDATE_CUSTOMER", payload: customer});
         setSelectedCustomer(null);
     }
@@ -49,7 +49,7 @@ export function ViewCustomer() {
                             {/* Update Button */}
                             <button
                                 className="px-4 py-2 bg-orange-500 text-white text-sm font-semibold rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
-                                onClick={() => handleUpdate(customer)}
+                                onClick={() => handleOpenUpdatePopup(customer)}
                             >
                                 Update
                             </button>
@@ -69,7 +69,7 @@ export function ViewCustomer() {
                 <UpdateCustomer
                     customer={selectedCustomer}
                     onClose={handleClose}
-                    onSave={handleSave}
+                    onUpdate={handleUpdate}
                 />
             )}
         </div>

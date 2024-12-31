@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Customer } from "../model/Customer";
 
-export function UpdateCustomer({ customer, onClose, onSave }: {
+export function UpdateCustomer({ customer, onClose, onUpdate }: {
     customer: Customer | null;
     onClose: () => void;
-    onSave: (updatedCustomer: Customer) => void;
+    onUpdate : (updatedCustomer: Customer) => void;
 }) {
     const [name, setName] = useState(customer?.name || "");
     const [email, setEmail] = useState(customer?.email || "");
@@ -19,7 +19,7 @@ export function UpdateCustomer({ customer, onClose, onSave }: {
 
     function handleSave() {
         if (customer) {
-            onSave({ ...customer, name, email, mobile });
+            onUpdate({ ...customer, name, email, mobile });
         }
         onClose();
     }
