@@ -6,6 +6,8 @@ import {Customer} from "./pages/Customer.tsx";
 import {Item} from "./pages/Item.tsx";
 import {Orders} from "./pages/Orders.tsx";
 import {Error} from "./components/Error.tsx";
+import {CustomerProvider} from "./contexts/CustomerProvider.tsx";
+import {ItemProvider} from "./contexts/ItemProvider.tsx";
 
 function App() {
 
@@ -24,7 +26,12 @@ function App() {
   ])
 
   return (
-    <RouterProvider router={routes}></RouterProvider>
+      <CustomerProvider>
+        <ItemProvider>
+          <RouterProvider router={routes}></RouterProvider>
+        </ItemProvider>
+      </CustomerProvider>
+
   )
 }
 
